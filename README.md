@@ -17,3 +17,9 @@ cl_recall_score = metrics.recall_score(y_train_cl,tmp_test_predict)
 
 cl_score, cl_accuracy, cl_log_loss, cl_hinge_loss, cl_hamming_loss, cl_confusion_matrix, cl_f1_score, cl_recall_score
 # cl_confusion_matrix
+
+
+
+cl_classification_report = metrics.classification_report(y_train_cl,tmp_test_predict)
+
+print(cl_classification_report)
