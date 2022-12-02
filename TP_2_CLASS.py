@@ -234,7 +234,7 @@ class DataProcessing:
         return row
     
     def __temps_et_score_from_object_id(self,object) :
-        df_actor_temps = self.dataset.loc[dataset['object_id'] == object].groupby('actor').agg({"temps":['sum'],"score":['max']})
+        df_actor_temps = self.dataset.loc[self.dataset['object_id'] == object].groupby('actor').agg({"temps":['sum'],"score":['max']})
 
         df_actor_temps = pd.concat([df_actor_temps.temps,df_actor_temps.score],axis=1)
         df_actor_temps.sort_values(['sum'],ascending=[True],inplace=True)
@@ -246,7 +246,7 @@ class DataProcessing:
         return df_actor_temps[0],df_actor_temps[1]
     
     def __get_rang_score_max_by_module_name(self,nom_module):
-        df_actor = dataset.loc[dataset['object_id'] == nom_module].groupby(['actor']).agg({'score':['max']})
+        df_actor = self.dataset.loc[self.dataset['object_id'] == nom_module].groupby(['actor']).agg({'score':['max']})
         df_actor = df_actor.score
         df_actor.sort_values(['max'],ascending=[False],inplace=True)
 
